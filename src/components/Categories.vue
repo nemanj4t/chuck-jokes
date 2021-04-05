@@ -26,7 +26,8 @@ export default class Categories extends Vue {
     created(): void {
         CategoryRepository
             .getAll()
-            .then(allCategories => this.categories = allCategories);
+            .then(allCategories => this.categories = allCategories)
+            .catch(error => console.log(error));
     }
 }
 </script>

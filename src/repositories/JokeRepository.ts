@@ -26,10 +26,7 @@ class JokeRepository extends Repository {
                 joke.setIconUrl = data.icon_url;
                 joke.setUrl = data.url;
                 joke.setValue = data.value;
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            });
 
         return joke;
     } 

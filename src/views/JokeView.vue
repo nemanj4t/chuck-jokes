@@ -3,8 +3,10 @@
         <img src="../assets/left-arrow.svg" class="go-back-icon" @click="goBack" />
 
         <div class="joke-container mt-4">
-          <Joke :joke="joke" />
-          <button class="button-custom mt-4" @click="readAnotherOne">Another one</button>
+            <p v-if="errorMessage">{{ errorMessage }}</p>
+            <Joke :joke="joke" />
+            <Loader v-if="loading" />
+            <button class="button-custom mt-4" @click="readAnotherOne">Another one</button>
         </div>
     </div>
 </template>
@@ -12,12 +14,14 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import Joke from '@/components/Joke.vue';
-import JokeModel from '@/models/Joke'
+import Loader from '@/components/Loader.vue';
+import JokeModel from '@/models/Joke';
 import JokeRepository from '@/repositories/JokeRepository';
 
 @Options({
     components: {
-        Joke
+        Joke,
+        Loader
     },
 })
 
@@ -25,17 +29,22 @@ export default class JokeView extends Vue {
   
     public joke: JokeModel = new JokeModel;
     public category: string|string[] = "";
+    public loading = false;
+    public errorMessage = "";
 
     mounted() {
-        console.log(this.joke);
         this.category = this.$route.params.category;
         this.readAnotherOne();
     }
 
     readAnotherOne(): void {
+        this.loading = true;
+
         JokeRepository
-          .getRandomJoke(this.category)
-          .then((response) => this.joke = response);
+            .getRandomJoke(this.category)
+            .then(response => this.joke = response)
+            .catch(error => this.errorMessage = error.response['data'].message)
+            .finally(() => this.loading = false);
     }
 
     goBack(): void {

@@ -3,16 +3,21 @@ import CategoriesView from '../views/CategoriesView.vue'
 import JokeView from '../views/JokeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'Categories',
-    component: CategoriesView
-  },
-  {
-    path: '/categories/:category',
-    name: 'Joke',
-    component: JokeView
-  }
+    {
+        path: '/',
+        name: 'Categories',
+        component: CategoriesView
+    },
+    {
+        path: '/categories/:category',
+        name: 'Joke',
+        component: JokeView
+    },
+    {
+        path: '/:any(.*)',
+        name: 'Universal',
+        component: CategoriesView
+    }
 ]
 
 const router = createRouter({

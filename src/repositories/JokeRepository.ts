@@ -23,7 +23,7 @@ class JokeRepository extends Repository {
             .then(response => {
                 const {data} = response; 
                 joke.setId = data.id;
-                joke.setIconUrl = data.iconUrl;
+                joke.setIconUrl = data.icon_url;
                 joke.setUrl = data.url;
                 joke.setValue = data.value;
             })

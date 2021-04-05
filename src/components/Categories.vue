@@ -1,6 +1,9 @@
 <template>
-    <div>
-        <Category v-for="category in categories" :key="category.getName" :name="category.getName" v-on:click="open(category)"/>
+    <div class="row">
+        <Category 
+            v-for="category in categories" 
+            :key="category.getName" 
+            :name="category.getName" />
     </div>
 </template>
 
@@ -24,10 +27,6 @@ export default class Categories extends Vue {
         CategoryRepository
             .getAll()
             .then(allCategories => this.categories = allCategories);
-    }
-
-    open(category: CategoryModel): void {
-        this.$router.push('/categories/' + category.getName);
     }
 }
 </script>

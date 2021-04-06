@@ -12,6 +12,7 @@ import { Options, Vue } from 'vue-class-component';
 import Category from '@/components/Category.vue';
 import CategoryModel from '@/models/Category';
 import CategoryRepository from '@/repositories/CategoryRepository';
+import EventBusService from '@/service/EventBusService';
 
 @Options({
     components: {
@@ -23,11 +24,11 @@ export default class Categories extends Vue {
 
     public categories: CategoryModel[] = [];
 
-    created(): void {
+    mounted(): void {
         CategoryRepository
             .getAll()
             .then(allCategories => this.categories = allCategories)
-            .catch(error => console.log(error));
+            .catch(error => EventBusService.publish('error', error.response['data'].message));
     }
 }
 </script>

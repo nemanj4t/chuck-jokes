@@ -3,7 +3,6 @@
         <img src="../assets/left-arrow.svg" class="go-back-icon" @click="goBack" />
 
         <div class="joke-container mt-4">
-            <p v-if="errorMessage">{{ errorMessage }}</p>
             <Joke :joke="joke" />
             <Loader v-if="loading" />
             <button class="button-custom mt-4" @click="readAnotherOne">Another one</button>
@@ -17,6 +16,7 @@ import Joke from '@/components/Joke.vue';
 import Loader from '@/components/Loader.vue';
 import JokeModel from '@/models/Joke';
 import JokeRepository from '@/repositories/JokeRepository';
+import EventBusService from '@/service/EventBusService';
 
 @Options({
     components: {
@@ -30,7 +30,6 @@ export default class JokeView extends Vue {
     public joke: JokeModel = new JokeModel;
     public category: string|string[] = "";
     public loading = false;
-    public errorMessage = "";
 
     mounted() {
         this.category = this.$route.params.category;
@@ -43,7 +42,7 @@ export default class JokeView extends Vue {
         JokeRepository
             .getRandomJoke(this.category)
             .then(response => this.joke = response)
-            .catch(error => this.errorMessage = error.response['data'].message)
+            .catch(error => EventBusService.publish('error', error.response['data'].message))
             .finally(() => this.loading = false);
     }
 

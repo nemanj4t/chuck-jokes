@@ -1,14 +1,11 @@
 class Joke {
-    private id: string;
-    private iconUrl: string;
-    private url: string;
-    private value: string;
 
-    constructor(id = "", iconUrl = "", url = "", value = "") {
-        this.id = id;
-        this.iconUrl = iconUrl;
-        this.url = url;
-        this.value = value;
+    constructor(
+        private id = "", 
+        private iconUrl = "",  
+        private url = "", 
+        private value = ""
+    ) {
     }
 
     get getId(): string {

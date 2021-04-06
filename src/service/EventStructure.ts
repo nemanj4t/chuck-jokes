@@ -1,11 +1,9 @@
 class EventStructure {
 
-    private type: string;
-    private callback: (payload?: any) => void;
-
-    constructor(type: string, callback: (payload?: any) => void) {
-        this.type = type;
-        this.callback = callback;
+    constructor(
+        private type: string, 
+        private callback: (payload?: any) => void
+    ) {   
     }
 
     get getType(): string {

@@ -28,7 +28,7 @@ export default class Categories extends Vue {
         CategoryRepository
             .getAll()
             .then(allCategories => this.categories = allCategories)
-            .catch(error => EventBusService.publish('error', error.response['data'].message));
+            .catch(error => EventBusService.publish('error', 'App', error.response['data'].message));
     }
 }
 </script>

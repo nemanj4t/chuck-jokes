@@ -2,7 +2,8 @@ class EventStructure {
 
     constructor(
         private _type: string, 
-        private _callback: (payload?: any) => void
+        private _callback: (payload?: any) => void,
+        private _descriptor: string
     ) {   
     }
 
@@ -24,6 +25,14 @@ class EventStructure {
 
     public handle(payload?: any): void {
         this._callback(payload);
+    }
+
+    get descriptor(): string {
+        return this._descriptor;
+    }
+
+    set descriptor(descriptor: string) {
+        this._descriptor = descriptor;
     }
 }
 

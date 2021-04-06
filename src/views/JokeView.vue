@@ -42,7 +42,7 @@ export default class JokeView extends Vue {
         JokeRepository
             .getRandomJoke(this.category)
             .then(response => this.joke = response)
-            .catch(error => EventBusService.publish('error', error.response['data'].message))
+            .catch(error => EventBusService.publish('error', 'App', error.response['data'].message))
             .finally(() => this.loading = false);
     }
 

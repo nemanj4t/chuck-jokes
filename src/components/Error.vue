@@ -18,12 +18,8 @@ export default class Error extends Vue {
 
     mounted() {
         setTimeout(() => {
-            EventBusService.publish('remove-error');
+            EventBusService.publish('remove-error', 'App');
         }, 3000);
     }
 }
 </script>
-
-<style lang="scss" scoped>
-    
-</style>

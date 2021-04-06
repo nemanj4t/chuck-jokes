@@ -20,12 +20,13 @@ export default class App extends Vue {
     public errorMessage = "";
 
     mounted() {
-        EventBusService.subscribe('error', this.errorCallback);
-        EventBusService.subscribe('remove-error', this.removeErrorCallback);
+        EventBusService.subscribe('error', this.errorCallback, 'App');
+        EventBusService.subscribe('remove-error', this.removeErrorCallback, 'App');
     }
 
     beforeUnmount() {
-        EventBusService.unsubscribe();
+        EventBusService.unsubscribe('error', 'App');
+        EventBusService.unsubscribe('remove-error', 'App');
     }
 
     public errorCallback(payload?: any) {

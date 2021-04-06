@@ -5,14 +5,14 @@ import { GET_RANDOM_JOKE_FROM_CATEGORTY } from '@/api'
 
 class JokeService extends ModelService {
 
-    private static modelService: JokeService;
+    private static _modelService: JokeService;
 
     public static getModelService(): JokeService {
-        if (!this.modelService) {
-            this.modelService = new JokeService;
+        if (!this._modelService) {
+            this._modelService = new JokeService;
         }
 
-        return this.modelService;
+        return this._modelService;
     }
 
     public async getRandomJoke(category: string|string[]): Promise<Joke> {

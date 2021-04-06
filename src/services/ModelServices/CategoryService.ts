@@ -5,30 +5,28 @@ import { GET_ALL_CATEGORIES } from '@/api'
 
 class CategoryService extends ModelService {
 
-    private static modelService: CategoryService;
-    private categories: Category[] = [];
+    private static _modelService: CategoryService;
 
     public static getModelService(): CategoryService {
-        if (!this.modelService) {
-            this.modelService = new CategoryService;
+        if (!this._modelService) {
+            this._modelService = new CategoryService;
         }
 
-        return this.modelService;
+        return this._modelService;
     }
 
     public async getAll(): Promise<Category[]> {
-        //cache categories
-        if (this.categories.length == 0) {
-            await this.client
-                .get(GET_ALL_CATEGORIES)
-                .then(response => {
-                    for (const category of response.data) {
-                        this.categories.push(new Category(category));
-                    }
-                });
-        }
+        const categories: Category[] = [];
 
-        return this.categories;
+        await this.client
+            .get(GET_ALL_CATEGORIES)
+            .then(response => {
+                for (const category of response.data) {
+                    categories.push(new Category(category));
+                }
+            });
+
+        return categories;
     } 
 }
 

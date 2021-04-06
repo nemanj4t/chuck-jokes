@@ -19,7 +19,7 @@ class CategoryRepository extends Repository {
     public async getAll(): Promise<Category[]> {
         //cache categories
         if (this.categories.length == 0) {
-            await this.getAxios
+            await this.client
                 .get(GET_ALL_CATEGORIES)
                 .then(response => {
                     for (const category of response.data) {

@@ -1,10 +1,10 @@
 import axios, { AxiosInstance } from 'axios'
 
 abstract class Repository {
-    private axios: AxiosInstance = axios;
+    private _client: AxiosInstance = axios;
 
-    get getAxios(): AxiosInstance {
-        return this.axios;
+    get client(): AxiosInstance {
+        return this._client;
     }
 }
 

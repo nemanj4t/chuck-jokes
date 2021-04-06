@@ -18,7 +18,7 @@ class JokeRepository extends Repository {
     public async getRandomJoke(category: string|string[]): Promise<Joke> {
         const joke: Joke = new Joke;
 
-        await this.getAxios
+        await this.client
             .get(GET_RANDOM_JOKE_FROM_CATEGORTY + category)
             .then(response => {
                 const {data} = response; 

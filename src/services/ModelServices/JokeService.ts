@@ -1,18 +1,18 @@
 import Joke from '@/models/Joke'
-import Repository from '@/repositories/Repository'
+import ModelService from '@/services/ModelServices/ModelService'
 
 import { GET_RANDOM_JOKE_FROM_CATEGORTY } from '@/api'
 
-class JokeRepository extends Repository {
+class JokeService extends ModelService {
 
-    private static repository: JokeRepository;
+    private static modelService: JokeService;
 
-    public static getRepository(): JokeRepository {
-        if (!this.repository) {
-            this.repository = new JokeRepository;
+    public static getModelService(): JokeService {
+        if (!this.modelService) {
+            this.modelService = new JokeService;
         }
 
-        return this.repository;
+        return this.modelService;
     }
 
     public async getRandomJoke(category: string|string[]): Promise<Joke> {
@@ -32,4 +32,4 @@ class JokeRepository extends Repository {
     } 
 }
 
-export default JokeRepository.getRepository();
+export default JokeService.getModelService();

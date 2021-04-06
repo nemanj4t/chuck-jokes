@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import EventBusService from '@/service/EventBusService'
+import EventBusService from '@/services/EventBusService'
 
 @Options({
     props: [

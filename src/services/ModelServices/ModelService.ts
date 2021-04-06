@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 
-abstract class Repository {
+abstract class ModelService {
     private _client: AxiosInstance = axios;
 
     get client(): AxiosInstance {
@@ -8,4 +8,4 @@ abstract class Repository {
     }
 }
 
-export default Repository;
+export default ModelService;

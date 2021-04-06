@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import EventBusService from '@/service/EventBusService';
+import EventBusService from '@/services/EventBusService';
 import Error from '@/components/Error.vue';
 
 @Options({

@@ -1,19 +1,19 @@
 import Category from '@/models/Category'
-import Repository from '@/repositories/Repository'
+import ModelService from '@/services/ModelServices/ModelService'
 
 import { GET_ALL_CATEGORIES } from '@/api'
 
-class CategoryRepository extends Repository {
+class CategoryService extends ModelService {
 
-    private static repository: CategoryRepository;
+    private static modelService: CategoryService;
     private categories: Category[] = [];
 
-    public static getRepository(): CategoryRepository {
-        if (!this.repository) {
-            this.repository = new CategoryRepository;
+    public static getModelService(): CategoryService {
+        if (!this.modelService) {
+            this.modelService = new CategoryService;
         }
 
-        return this.repository;
+        return this.modelService;
     }
 
     public async getAll(): Promise<Category[]> {
@@ -32,4 +32,4 @@ class CategoryRepository extends Repository {
     } 
 }
 
-export default CategoryRepository.getRepository();
+export default CategoryService.getModelService();

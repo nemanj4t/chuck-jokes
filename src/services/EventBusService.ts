@@ -1,4 +1,4 @@
-import EventStructure from '@/service/EventStructure';
+import EventStructure from '@/services/EventStructure';
 
 class EventBusService {
 

@@ -15,8 +15,8 @@ import { Options, Vue } from 'vue-class-component';
 import Joke from '@/components/Joke.vue';
 import Loader from '@/components/Loader.vue';
 import JokeModel from '@/models/Joke';
-import JokeRepository from '@/repositories/JokeRepository';
-import EventBusService from '@/service/EventBusService';
+import JokeService from '@/services/ModelServices/JokeService';
+import EventBusService from '@/services/EventBusService';
 
 @Options({
     components: {
@@ -39,7 +39,7 @@ export default class JokeView extends Vue {
     readAnotherOne(): void {
         this.loading = true;
 
-        JokeRepository
+        JokeService
             .getRandomJoke(this.category)
             .then(response => this.joke = response)
             .catch(error => EventBusService.publish('error', 'App', error.response['data'].message))

@@ -11,8 +11,8 @@
 import { Options, Vue } from 'vue-class-component';
 import Category from '@/components/Category.vue';
 import CategoryModel from '@/models/Category';
-import CategoryRepository from '@/repositories/CategoryRepository';
-import EventBusService from '@/service/EventBusService';
+import CategoryService from '@/services/ModelServices/CategoryService';
+import EventBusService from '@/services/EventBusService';
 
 @Options({
     components: {
@@ -25,7 +25,7 @@ export default class Categories extends Vue {
     public categories: CategoryModel[] = [];
 
     mounted(): void {
-        CategoryRepository
+        CategoryService
             .getAll()
             .then(allCategories => this.categories = allCategories)
             .catch(error => EventBusService.publish('error', 'App', error.response['data'].message));

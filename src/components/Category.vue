@@ -27,21 +27,5 @@ export default class Category extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-    .button-custom {
-        width: 100%;
-        font-size: 1.5rem;
-        text-align: center;
-        border: solid 1px;
-        text-decoration: none;
-        background-color: white;
-        max-width: 450px;
-        width: 100%;
-        color: black;
-        display: inherit;
-
-        &:hover {
-            color: black;
-            box-shadow: 1px 1px black;
-        }
-    }
+    @import '@/scss/category.scss';
 </style>

@@ -22,18 +22,5 @@ export default class Joke extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .joke {
-        text-align: center;
-    }
-
-    .joke-text {
-        max-width: 450px;
-        font-size: 1.25rem;
-    }
+    @import '@/scss/joke.scss';
 </style>

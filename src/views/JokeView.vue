@@ -53,34 +53,5 @@ export default class JokeView extends Vue {
 </script>
 
 <style lang="scss" scoped>
-    .go-back-icon {
-        width: 2rem;
-        cursor: pointer;
-    }
-    
-    .jok-view {
-        text-align: center;
-    }
-
-    .button-custom {
-        text-align: center;
-        border: solid 1px;
-        text-decoration: none;
-        background-color: white;
-        max-width: 450px;
-        width: 100%;
-        font-size: 1.25rem;
-
-        &:hover {
-            color: black;
-            box-shadow: 1px 1px black;
-        }
-    }
-
-    .joke-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+    @import '@/scss/joke-view.scss';
 </style>

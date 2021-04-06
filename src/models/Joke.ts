@@ -1,43 +1,43 @@
 class Joke {
 
     constructor(
-        private id = "", 
-        private iconUrl = "",  
-        private url = "", 
-        private value = ""
+        private _id = "", 
+        private _iconUrl = "",  
+        private _url = "", 
+        private _value = ""
     ) {
     }
 
-    get getId(): string {
-        return this.id;
+    get id(): string {
+        return this._id;
     }
 
-    set setId(id: string) {
-        this.id = id;
+    set id(id: string) {
+        this._id = id;
     }
 
-    get getIconUrl(): string {
-        return this.iconUrl;
+    get iconUrl(): string {
+        return this._iconUrl;
     }
 
-    set setIconUrl(iconUrl: string) {
-        this.iconUrl = iconUrl;
+    set iconUrl(iconUrl: string) {
+        this._iconUrl = iconUrl;
     }
 
-    get getUrl(): string {
-        return this.url;
+    get url(): string {
+        return this._url;
     }
 
-    set setUrl(url: string) {
-        this.url = url;
+    set url(url: string) {
+        this._url = url;
     }
 
-    get getValue(): string {
-        return this.value;
+    get value(): string {
+        return this._value;
     }
 
-    set setValue(value: string) {
-        this.value = value;
+    set value(value: string) {
+        this._value = value;
     }
 }
 

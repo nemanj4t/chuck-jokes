@@ -1,14 +1,14 @@
 class Category {
 
-    constructor(private name: string) {   
+    constructor(private _name: string) {   
     }
 
-    get getName(): string {
-        return this.name;
+    get name(): string {
+        return this._name;
     }
 
-    set setName(name: string) {
-        this.name = name;
+    set name(name: string) {
+        this._name = name;
     }
 }
 

@@ -2,20 +2,20 @@ import EventStructure from '@/service/EventStructure';
 
 class EventBusService {
 
-    private id = 0;
-    private static eventBusService: EventBusService;
-    private subscriptions: EventStructure[] = [];
+    private _id = 0;
+    private static _eventBusService: EventBusService;
+    private _subscriptions: EventStructure[] = [];
 
     public static getEventBusService(): EventBusService {
-        if (!this.eventBusService) {
-            this.eventBusService = new EventBusService;
+        if (!this._eventBusService) {
+            this._eventBusService = new EventBusService;
         }
 
-        return this.eventBusService;
+        return this._eventBusService;
     }
 
     public subscribe(eventType: string, callback: (payload?: any) => void) {
-        this.subscriptions[this.id] = new EventStructure(eventType, callback);
+        this._subscriptions[this._id] = new EventStructure(eventType, callback);
 
         this.incrementId();
     }
@@ -28,12 +28,12 @@ class EventBusService {
     }
 
     public unsubscribe() {
-        this.subscriptions = [];
+        this._subscriptions = [];
     }
 
     private findEvent(eventType: string): EventStructure|null{
-        for (const subscription of this.subscriptions) {
-            if (subscription.getType === eventType) {
+        for (const subscription of this._subscriptions) {
+            if (subscription.type === eventType) {
                 return subscription;
             }
         }
@@ -42,7 +42,7 @@ class EventBusService {
     }
 
     private incrementId() {
-        this.id += 1;
+        this._id += 1;
     }
 }
 

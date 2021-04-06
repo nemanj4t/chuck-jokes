@@ -2,8 +2,8 @@
     <div class="row">
         <Category 
             v-for="category in categories" 
-            :key="category.getName" 
-            :name="category.getName" />
+            :key="category.name" 
+            :name="category.name" />
     </div>
 </template>
 

@@ -1,29 +1,29 @@
 class EventStructure {
 
     constructor(
-        private type: string, 
-        private callback: (payload?: any) => void
+        private _type: string, 
+        private _callback: (payload?: any) => void
     ) {   
     }
 
-    get getType(): string {
-        return this.type;
+    get type(): string {
+        return this._type;
     }
 
-    set setType(type: string) {
-        this.type = type;
+    set type(type: string) {
+        this._type = type;
     }
 
-    get getCallback(): (payload?: any) => void {
-        return this.callback;
+    get callback(): (payload?: any) => void {
+        return this._callback;
     }
 
-    set setCallback(callback: (payload?: any) => void) {
-        this.callback = callback;
+    set callback(callback: (payload?: any) => void) {
+        this._callback = callback;
     }
 
     public handle(payload?: any): void {
-        this.callback(payload);
+        this._callback(payload);
     }
 }
 

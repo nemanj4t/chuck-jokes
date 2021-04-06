@@ -1,7 +1,7 @@
 <template>
     <div class="joke">
-        <img :src="joke.getIconUrl" />
-        <p class="joke-text mt-4">{{ joke.getValue }}</p>
+        <img :src="joke.iconUrl" />
+        <p class="joke-text mt-4">{{ joke.value }}</p>
     </div>
 </template>
 

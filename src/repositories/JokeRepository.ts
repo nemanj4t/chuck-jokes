@@ -22,10 +22,10 @@ class JokeRepository extends Repository {
             .get(GET_RANDOM_JOKE_FROM_CATEGORTY + category)
             .then(response => {
                 const {data} = response; 
-                joke.setId = data.id;
-                joke.setIconUrl = data.icon_url;
-                joke.setUrl = data.url;
-                joke.setValue = data.value;
+                joke.id = data.id;
+                joke.iconUrl = data.icon_url;
+                joke.url = data.url;
+                joke.value = data.value;
             });
 
         return joke;
